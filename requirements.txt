@@ -1,4 +1,5 @@
-streamlit
-PyPDF2
-langchain
+
+streamlit>=1.24
+PyPDF2>=3.0
+langchain>=0.1.151
 openai
