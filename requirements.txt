@@ -169,7 +169,6 @@ networkx==3.5
 nltk==3.9.2
 notebook==7.4.5
 notebook_shim==0.2.4
-numpy==2.3.4
 oauthlib==3.3.1
 olefile==0.47
 onnxruntime==1.23.2
