@@ -8,8 +8,8 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
+from langchain_classic.memory import ConversationBufferMemory
+from langchain_classic.chains import ConversationalRetrievalChain
 
 # -----------------------------------------------------------
 # 🧠 STEP 1: Function to read text from uploaded PDFs
@@ -27,10 +27,10 @@ def read_pdf_text(pdf_files):
 # ✂️ STEP 2: Split text into smaller parts (chunks)
 # -----------------------------------------------------------
 def split_text_into_chunks(text):
-    splitter = CharacterTextSplitter(
-        separator="\n",      # split by new lines
-        chunk_size=1000,     # each chunk has 1000 characters
-        chunk_overlap=200    # overlap helps to not lose context
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200,
+        separators=["\n\n", "\n", " ", ""]
     )
     chunks = splitter.split_text(text)
     return chunks
