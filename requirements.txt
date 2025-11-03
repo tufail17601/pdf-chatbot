@@ -10,4 +10,5 @@ faiss-cpu
 pypdf2
 streamlit
 tiktoken
+sentence-transformers
 
