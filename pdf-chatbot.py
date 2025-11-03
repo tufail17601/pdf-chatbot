@@ -4,13 +4,13 @@
 import os
 import streamlit as st
 from PyPDF2 import PdfReader
-from langchain.text_splitter import CharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain.chat_models import ChatOpenAI
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
+
 from langchain_classic.memory import ConversationBufferMemory
 from langchain_classic.chains import ConversationalRetrievalChain
-
 # -----------------------------------------------------------
 # 🧠 STEP 1: Function to read text from uploaded PDFs
 # -----------------------------------------------------------
@@ -26,6 +26,8 @@ def read_pdf_text(pdf_files):
 # -----------------------------------------------------------
 # ✂️ STEP 2: Split text into smaller parts (chunks)
 # -----------------------------------------------------------
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 def split_text_into_chunks(text):
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
@@ -34,6 +36,7 @@ def split_text_into_chunks(text):
     )
     chunks = splitter.split_text(text)
     return chunks
+
 
 
 # -----------------------------------------------------------
@@ -90,8 +93,7 @@ def handle_question(user_question):
 # -----------------------------------------------------------
 def main():
     # Set your API key here
-    from dotenv import load_dotenv
-    load_dotenv()
+    os.environ['OPENAI_API_KEY'] = "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"
 
     #modell = ChatOpenAI(model='gpt-4o-mini')
 
