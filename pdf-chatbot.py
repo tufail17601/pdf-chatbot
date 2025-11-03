@@ -93,7 +93,7 @@ def handle_question(user_question):
 # -----------------------------------------------------------
 def main():
     # Set your API key here
-    os.environ['OPENAI_API_KEY'] = "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"
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
     #modell = ChatOpenAI(model='gpt-4o-mini')
 
