@@ -41,7 +41,8 @@ def split_text_into_chunks(text):
 # 💾 STEP 3: Convert text chunks into vector embeddings
 # -----------------------------------------------------------
 def create_vector_store(chunks):
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L6-v2")
+
     vector_store = FAISS.from_texts(chunks, embedding=embeddings)
     return vector_store
 
