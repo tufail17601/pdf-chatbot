@@ -1,1 +1,22 @@
+# === Core AI / LLM Libraries ===
+langchain
+langchain-community
+langchain-openai
+
+# === PDF Processing ===
 PyPDF2
+pypdf
+langchain-text-splitters
+
+# === Environment Variables ===
+python-dotenv
+
+# === Web and API ===
+requests
+
+# === Streamlit for UI ===
+streamlit
+
+# === Optional Tools (for agents, vector DBs, etc.) ===
+faiss-cpu
+tiktoken
