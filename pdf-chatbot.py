@@ -107,22 +107,30 @@ def main():
     with st.sidebar:
         st.header("📂 Upload your PDF")
         pdf_files = st.file_uploader("Upload PDF files", accept_multiple_files=True)
+        
 
-        if st.button("Process PDF"):
-            with st.spinner("⏳ Processing your PDF..."):
-                # Extract text
-                text = read_pdf_text(pdf_files)
+       if st.button("Process PDF"):
+           if not pdf_files:  # 🛑 Check if no files are uploaded
+               st.warning("⚠️ Please upload at least one PDF before processing.")
+           else:
+               with st.spinner("⏳ Processing your PDF..."):
+                   try:
+                       # Extract text
+                       text = read_pdf_text(pdf_files)
 
                 # Split into chunks
-                chunks = split_text_into_chunks(text)
+                       chunks = split_text_into_chunks(text)
 
                 # Create vector store (embeddings)
-                vector_store = create_vector_store(chunks)
+                       vector_store = create_vector_store(chunks)
 
                 # Create chat conversation chain
-                st.session_state.conversation = create_conversation_chain(vector_store)
+                       st.session_state.conversation = create_conversation_chain(vector_store)
 
-            st.success("✅ PDF processed! You can now ask questions.")
+                       st.success("✅ PDF processed! You can now ask questions.")
+                   except Exception as e:
+                       st.error("❌ Oops! Something went wrong while processing your PDF. Please try again.")
+
 
     # Input for user question
     user_question = st.text_input("Ask a question about your PDF:")
