@@ -20,3 +20,4 @@ streamlit
 # === Optional Tools (for agents, vector DBs, etc.) ===
 faiss-cpu
 tiktoken
+sentence-transformers
